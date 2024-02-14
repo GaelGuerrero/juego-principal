@@ -1,0 +1,51 @@
+{
+    "nextPaletteID": 5,
+    "palettes": {
+        "custom2": {
+            "id": "custom2",
+            "name": "Bandera",
+            "colors": [
+                "#000000",
+                "#FFFFFF",
+                "#FF2121",
+                "#FF93C4",
+                "#FF8135",
+                "#FFF609",
+                "#008F39",
+                "#78DC52",
+                "#003FAD",
+                "#757575",
+                "#8E2EC4",
+                "#A4839F",
+                "#5C406c",
+                "#E5CDC4",
+                "#91463d",
+                "#000000"
+            ],
+            "custom": true
+        },
+        "custom4": {
+            "id": "custom4",
+            "name": "Cielo",
+            "colors": [
+                "#000000",
+                "#FFFFFF",
+                "#FF2121",
+                "#FF93C4",
+                "#FF8135",
+                "#FFF705",
+                "#008F39",
+                "#78DC52",
+                "#003FAD",
+                "#757575",
+                "#92C5FC",
+                "#A4839F",
+                "#5C406c",
+                "#E5CDC4",
+                "#91463d",
+                "#000000"
+            ],
+            "custom": true
+        }
+    }
+}
