@@ -240,44 +240,6 @@ f 1 1 1 f f 6 6 6 6 f f 1 1 1 f
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
-            case "image8":
-            case "AGACHARSE_IZQUIERDA":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . f f f f f f f . . . . 
-. . . . f 8 8 8 8 8 8 f f f . . 
-. . . f 8 8 8 8 8 8 8 8 8 f f . 
-. . f 8 8 f f f f 8 8 8 8 8 f f 
-. . f 8 f d f d f 8 8 8 8 8 8 f 
-. . f 8 7 1 d 7 1 d 8 8 8 8 8 f 
-. . f 8 7 1 d 7 1 d 8 8 8 f 8 f 
-. . f 8 d d d d d d 8 8 f . f . 
-. . f 8 d d d d d 8 8 8 f . . . 
-. . f 8 8 8 8 8 8 8 8 8 f . . . 
-. . f d 8 8 8 8 8 8 8 d d f . . 
-. f d d e e e 5 e e e d d f . . 
-. . f f 8 8 8 8 8 8 8 b f . . . 
-. . . . e e e . e e e f . . . . 
-`;
-            case "image7":
-            case "AGACHARSE_DERECHA":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . f f f f f f f . . . . . 
-. . f f f 8 8 8 8 8 8 f . . . . 
-. f f 8 8 8 8 8 8 8 8 8 f . . . 
-f f 8 8 8 8 8 f f f f 8 8 f . . 
-f 8 8 8 8 8 8 f d f d f 8 f . . 
-f 8 8 8 8 8 d 1 7 d 1 7 8 f . . 
-f 8 f 8 8 8 d 1 7 d 1 7 8 f . . 
-. f . f 8 8 d d d d d d 8 f . . 
-. . . f 8 8 8 d d d d d 8 f . . 
-. . . f 8 8 8 8 8 8 8 8 8 f . . 
-. . f d d 8 8 8 8 8 8 8 d f . . 
-. . f d d e e e 5 e e e d d f . 
-. . . f b 8 8 8 8 8 8 8 f f . . 
-. . . . f e e e . e e e . . . . 
-`;
             case "image9":
             case "CORRER_IZQ1":return img`
 . . . . . . . . f f f f f . . . 
@@ -410,6 +372,44 @@ f 8 8 8 8 8 8 8 8 f f f . . . .
 . . . f 3 3 3 3 3 3 3 3 f . . . 
 . . . f f f f f f f f f f . . . 
 . . . . . c c . . c c . . . . . 
+`;
+            case "image8":
+            case "AGACHARSE_IZQUIERDA":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . f f f f f f f . . . . 
+. . . . f 8 8 8 8 8 8 f f f . . 
+. . . f 8 8 8 8 8 8 8 8 8 f f . 
+. . f 8 8 f f f f 8 8 8 8 8 f f 
+. . f 8 f d f d f 8 8 8 8 8 8 f 
+. . f 8 7 1 d 7 1 d 8 8 8 8 8 f 
+. . f 8 7 1 d 7 1 d 8 8 8 f 8 f 
+. . f 8 d d d d d d 8 8 f . f . 
+. . f 8 d d d d d 8 8 8 f . . . 
+. . f 8 8 8 8 8 8 8 8 8 f . . . 
+. . f d 8 8 8 8 8 8 8 d d f . . 
+. f d d e e e 5 e e e d d f . . 
+. . f f 8 8 8 8 8 8 8 b f . . . 
+. . . . e e e . e e e f . . . . 
+`;
+            case "image7":
+            case "AGACHARSE_DERECHA":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . f f f f f f f . . . . . 
+. . f f f 8 8 8 8 8 8 f . . . . 
+. f f 8 8 8 8 8 8 8 8 8 f . . . 
+f f 8 8 8 8 8 f f f f 8 8 f . . 
+f 8 8 8 8 8 8 f d f d f 8 f . . 
+f 8 8 8 8 8 d 1 7 d 1 7 8 f . . 
+f 8 f 8 8 8 d 1 7 d 1 7 8 f . . 
+. f . f 8 8 d d d d d d 8 f . . 
+. . . f 8 8 8 d d d d d 8 f . . 
+. . . f 8 8 8 8 8 8 8 8 8 f . . 
+. . f d d 8 8 8 8 8 8 8 d f . . 
+. . f d d e e e 5 e e e d d f . 
+. . . f b 8 8 8 8 8 8 8 f f . . 
+. . . . f e e e . e e e . . . . 
 `;
         }
         return null;
