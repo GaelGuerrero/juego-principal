@@ -1,4 +1,4 @@
-// Auto-generated code. Do not edit.
+// Código generado automáticamente. No editar.
 namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
@@ -424,10 +424,11 @@ f 8 8 8 8 8 8 8 8 f f f . . . .
 
     helpers._registerFactory("song", function(name: string) {
         switch(helpers.stringTrim(name)) {
-
+            case "song1":
+            case "mySong":return hex`0078000408040100001c00010a006400f401640000040000000000000000000000000005000004840000000400012704000800012508000c0001240c001000012210001400012c14001800012918001c00012a1c00200001292000280001272c003000012430003400012034003800012038003c0001223c004000012440004800012554005800011e58005c0001205c00600001226000680001246c006e0001256e007000012470007e000122`;
         }
         return null;
     })
 
 }
-// Auto-generated code. Do not edit.
+// Código generado automáticamente. No editar.

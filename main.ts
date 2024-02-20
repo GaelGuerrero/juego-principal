@@ -19,7 +19,7 @@ namespace SpriteKind {
     export const Flier = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Bumper, function (sprite, otherSprite) {
-    if (sprite.vy > 0 && !(sprite.isHittingTile(CollisionDirection.Bottom)) || sprite.y < otherSprite.top) {
+    if (sprite.x > 0 && !(sprite.isHittingTile(CollisionDirection.Bottom)) || sprite.x < otherSprite.x) {
         otherSprite.destroy(effects.ashes, 250)
         otherSprite.vy = -50
         sprite.vy = -2 * pixelsToMeters
@@ -78,9 +78,6 @@ function giveIntroduction () {
     showInstruction("Jump with the up or A button.")
     showInstruction("Double jump by pressing jump again.")
 }
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    attemptJump()
-})
 function initializeCoinAnimation () {
     coinAnimation = animation.createAnimation(ActionKind.Idle, 200)
     coinAnimation.addAnimationFrame(img`
@@ -212,7 +209,7 @@ function initializeCoinAnimation () {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     otherSprite.destroy(effects.trail, 250)
-    otherSprite.y += -3
+    otherSprite.x += -3
     info.changeScoreBy(3)
     music.baDing.play()
 })
@@ -223,7 +220,7 @@ function attemptJump () {
     } else if (canDoubleJump) {
         doubleJumpSpeed = -3 * pixelsToMeters
         // Good double jump
-        if (hero.vy >= -40) {
+        if (hero.x >= -40) {
             doubleJumpSpeed = -4.5 * pixelsToMeters
             hero.startEffect(effects.trail, 500)
             scene.cameraShake(2, 250)
@@ -261,6 +258,11 @@ function setLevelTileMap (level: number) {
     }
     initializeLevel(level)
 }
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (!(hero.isHittingTile(CollisionDirection.Bottom))) {
+        hero.x += 80
+    }
+})
 function initializeFlierAnimations () {
     flierFlying = animation.createAnimation(ActionKind.Flying, 100)
     flierFlying.addAnimationFrame(assets.image`murcielagoarriba`)
@@ -269,9 +271,6 @@ function initializeFlierAnimations () {
     flierIdle = animation.createAnimation(ActionKind.Idle, 100)
     flierIdle.addAnimationFrame(assets.image`murcielagoarriba`)
 }
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    attemptJump()
-})
 function animateRun () {
     mainRunLeft = animation.createAnimation(ActionKind.RunningLeft, 100)
     animation.attachAnimation(hero, mainRunLeft)
@@ -407,6 +406,9 @@ function animateJumps () {
             `)
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    attemptJump()
+})
 function animateCrouch () {
     mainCrouchLeft = animation.createAnimation(ActionKind.CrouchLeft, 100)
     animation.attachAnimation(hero, mainCrouchLeft)
@@ -518,10 +520,8 @@ function createEnemies () {
         animation.attachAnimation(flier, flierIdle)
     }
 }
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!(hero.isHittingTile(CollisionDirection.Bottom))) {
-        hero.vy += 80
-    }
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    attemptJump()
 })
 function showInstruction (text: string) {
     game.showLongText(text, DialogLayout.Bottom)
@@ -737,11 +737,12 @@ levelCount = 8
 currentLevel = 0
 setLevelTileMap(currentLevel)
 giveIntroduction()
+music.play(music.createSong(assets.song`mySong`), music.PlaybackMode.LoopingInBackground)
 // set up hero animations
 game.onUpdate(function () {
-    if (hero.vx < 0) {
+    if (hero.x < 0) {
         heroFacingLeft = true
-    } else if (hero.vx > 0) {
+    } else if (hero.x > 0) {
         heroFacingLeft = false
     }
     if (hero.isHittingTile(CollisionDirection.Top)) {
@@ -753,15 +754,15 @@ game.onUpdate(function () {
         } else {
             animation.setAction(hero, ActionKind.CrouchRight)
         }
-    } else if (hero.vy < 20 && !(hero.isHittingTile(CollisionDirection.Bottom))) {
+    } else if (hero.x < 20 && !(hero.isHittingTile(CollisionDirection.Bottom))) {
         if (heroFacingLeft) {
             animation.setAction(hero, ActionKind.JumpingLeft)
         } else {
             animation.setAction(hero, ActionKind.JumpingRight)
         }
-    } else if (hero.vx < 0) {
+    } else if (hero.x < 0) {
         animation.setAction(hero, ActionKind.RunningLeft)
-    } else if (hero.vx > 0) {
+    } else if (hero.x > 0) {
         animation.setAction(hero, ActionKind.RunningRight)
     } else {
         if (heroFacingLeft) {
@@ -780,9 +781,9 @@ game.onUpdate(function () {
             } else if (value8.x - hero.x > 5) {
                 value8.vx = -25
             }
-            if (value8.y - hero.y < -5) {
+            if (value8.x - hero.x < -5) {
                 value8.vy = 25
-            } else if (value8.y - hero.y > 5) {
+            } else if (value8.x - hero.x > 5) {
                 value8.vy = -25
             }
             animation.setAction(value8, ActionKind.Flying)
